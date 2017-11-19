@@ -7,3 +7,15 @@ fos_user:
 
 api_login_check:
     path: /api/login_check
+
+places:
+    type:     rest
+    resource: AppBundle\Controller\Api\PlaceController
+
+prices:
+    type:     rest
+    resource: AppBundle\Controller\Api\Place\PriceController
+
+themes:
+    type:     rest
+    resource: AppBundle\Controller\Api\Place\ThemeController
