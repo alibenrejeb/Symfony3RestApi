@@ -1,3 +1,7 @@
+ligue:
+    resource: "@LigueBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
@@ -22,8 +26,16 @@ themes:
 
 divisions:
     type:     rest
-    resource: AppBundle\Controller\Api\Team\DivisionController
+    resource: Api\LigueBundle\Controller\Team\DivisionController
 
 players:
     type:     rest
-    resource: AppBundle\Controller\Api\Team\PlayerController
+    resource: Api\LigueBundle\Controller\Team\PlayerController
+
+teams:
+    type:     rest
+    resource: Api\LigueBundle\Controller\TeamController
+
+tables:
+    type: rest
+    resource: Api\LigueBundle\Controller\TableController

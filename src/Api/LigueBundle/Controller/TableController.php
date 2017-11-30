@@ -1,11 +1,10 @@
 <?php
-namespace AppBundle\Controller\Api;
+namespace Api\LigueBundle\Controller;
 
-use AppBundle\Entity\Saison;
-use AppBundle\Entity\Table;
-use AppBundle\Entity\Team;
-use AppBundle\Form\Type\TableType;
-use AppBundle\Services\Tables;
+use Api\LigueBundle\Entity\Saison;
+use Api\LigueBundle\Entity\Table;
+use Api\LigueBundle\Entity\Team;
+use Api\LigueBundle\Services\Tables;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,20 +17,24 @@ class TableController extends Controller
 {
     /**
      * @Rest\View()
-     * @Rest\Get("/api/tables/team-{team_id}/saison-{annee}", name="team_in_tables")
+     * @Rest\Get("/api/test/tables/team-{team_id}/saison-{annee}", name="test_team_in_tables")
      */
     public function getTeamInTablesAction(Request $request)
     {
-        /** @var  $sTables Tables */
+        /** @var $sTables Tables */
         $sTables = $this->container->get('teams.table');
-        return \FOS\RestBundle\View\View::create($sTables->sayHello(), Response::HTTP_OK);
+        return $sTables->tableOfTeams($request->get('team_id'), $request->get('annee'));
     }
 
-    public function getTeamInTables2Action(Request $request)
+    /**
+     * @Rest\View()
+     * @Rest\Get("/api/tables/team-{team_id}/saison-{annee}", name="team_in_tables")
+     */
+    public function updateTeamInTableAction(Request $request)
     {
         $saisonId = $request->get('annee');
         $teamId = $request->get('team_id');
-        $tablesRepository = $this->getDoctrine()->getRepository('AppBundle:Table');
+        $tablesRepository = $this->getDoctrine()->getRepository('LigueBundle:Table');
         $table = $tablesRepository->findOneBy(array(
             'saison' => $request->get('annee'),
             'team' => $request->get('team_id')
@@ -39,7 +42,7 @@ class TableController extends Controller
         /** @var $table Table */
 
         $team = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Team')
+            ->getRepository('LigueBundle:Team')
             ->find($teamId);
         /** @var $team Team */
 
@@ -48,7 +51,7 @@ class TableController extends Controller
         }
 
         $saison = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Saison')
+            ->getRepository('LigueBundle:Saison')
             ->find($saisonId);
         /** @var $saison Saison */
 
@@ -56,7 +59,9 @@ class TableController extends Controller
             return \FOS\RestBundle\View\View::create(['message' => 'Saison not found'], Response::HTTP_NOT_FOUND);
         }
 
-        $result = $tablesRepository->getTeamInTables($request->get('team_id'), $request->get('annee'));
+        /** @var $sTables Tables */
+        $sTables = $this->container->get('teams.table');
+        $result = $sTables->tableOfTeams($request->get('team_id'), $request->get('annee'));
 
         if(empty($table)) $table = new Table();
 

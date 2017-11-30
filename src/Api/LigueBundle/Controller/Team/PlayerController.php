@@ -1,10 +1,10 @@
 <?php
-namespace AppBundle\Controller\Api\Team;
+namespace Api\LigueBundle\Controller\Team;
 
-use AppBundle\Entity\Player;
-use AppBundle\Entity\Position;
-use AppBundle\Entity\Team;
-use AppBundle\Form\Type\PlayerType;
+use Api\LigueBundle\Entity\Player;
+use Api\LigueBundle\Entity\Position;
+use Api\LigueBundle\Entity\Team;
+use Api\LigueBundle\Form\Type\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +26,7 @@ class PlayerController extends Controller
         echo $request->get('p_id') . "\n";*/
 
         $team = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Team')
+            ->getRepository('LigueBundle:Team')
             ->find($request->get('team_id'));
         /** @var $team Team */
 
@@ -35,17 +35,13 @@ class PlayerController extends Controller
         }
 
         $position = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Position')
+            ->getRepository('LigueBundle:Position')
             ->find($request->get('p_id'));
         /** @var $position Position */
 
         if (empty($position)) {
             return $this->entityNotFound('Position');
         }
-
-/*        echo $team->getName()."\n";
-        echo $position->getLibelle()."\n";
-        die("addPlayerAction");*/
 
         $player = new Player();
         $player->setPosition($position);

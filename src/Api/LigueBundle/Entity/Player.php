@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Entity;
+namespace Api\LigueBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

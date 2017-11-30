@@ -1,8 +1,8 @@
 <?php
-namespace AppBundle\Controller\Api;
+namespace Api\LigueBundle\Controller;
 
-use AppBundle\Entity\Team;
-use AppBundle\Form\Type\TeamType;
+use Api\LigueBundle\Entity\Team;
+use Api\LigueBundle\Form\Type\TeamType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +21,7 @@ class TeamController extends Controller
     public function getTeamsAction(Request $request)
     {
         $teams = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Team')
+            ->getRepository('LigueBundle:Team')
             ->findAll();
         /* @var $teams Team[] */
 
@@ -35,7 +35,7 @@ class TeamController extends Controller
     public function getTeamAction(Request $request)
     {
         $team = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Team')
+            ->getRepository('LigueBundle:Team')
             ->find($request->get('team_id'));
         /* @var $team Team */
 
@@ -81,7 +81,7 @@ class TeamController extends Controller
     public function removeTeamAction(Request $request)
     {
         $em = $this->get('doctrine.orm.entity_manager');
-        $team = $em->getRepository('AppBundle:Team')
+        $team = $em->getRepository('LigueBundle:Team')
             ->find($request->get('id'));
         /* @var $team Team */
 
@@ -114,7 +114,7 @@ class TeamController extends Controller
     private function updateTeam(Request $request, $clearMissing)
     {
         $team = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Team')
+            ->getRepository('LigueBundle:Team')
             ->find($request->get('id'));
         /* @var $team Team */
 

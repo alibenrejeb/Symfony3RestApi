@@ -1,7 +1,7 @@
 <?php
-namespace AppBundle\Controller\Api\Team;
+namespace Api\LigueBundle\Controller\Team;
 
-use AppBundle\Entity\Division;
+use Api\LigueBundle\Entity\Division;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +19,7 @@ class DivisionController extends Controller
     public function getDivisionAction(Request $request)
     {
         $divisions = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('AppBundle:Division')
+            ->getRepository('LigueBundle:Division')
             ->findAll();
         /* @var $division Division[] */
 

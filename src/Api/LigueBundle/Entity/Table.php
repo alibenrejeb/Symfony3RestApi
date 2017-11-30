@@ -1,10 +1,10 @@
 <?php
-namespace AppBundle\Entity;
+namespace Api\LigueBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TableRepository")
+ * @ORM\Entity(repositoryClass="Api\LigueBundle\Repository\TableRepository")
  * @ORM\Table(name="tables")
  */
 class Table
