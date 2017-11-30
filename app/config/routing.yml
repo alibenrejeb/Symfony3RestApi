@@ -19,3 +19,11 @@ prices:
 themes:
     type:     rest
     resource: AppBundle\Controller\Api\Place\ThemeController
+
+divisions:
+    type:     rest
+    resource: AppBundle\Controller\Api\Team\DivisionController
+
+players:
+    type:     rest
+    resource: AppBundle\Controller\Api\Team\PlayerController

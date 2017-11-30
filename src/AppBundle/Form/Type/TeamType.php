@@ -12,6 +12,14 @@ class TeamType extends AbstractType
         $builder->add('name');
         $builder->add('code');
         $builder->add('shortName');
+        $builder->add('address');
+        $builder->add('phone');
+        $builder->add('email');
+        $builder->add('site');
+        $builder->add('colorHome');
+        $builder->add('colorAway');
+        $builder->add('colorAway');
+        $builder->add('division');
         $builder->add('logo');
     }
 

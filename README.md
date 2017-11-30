@@ -69,6 +69,8 @@ released under the MIT or BSD license.
 
 Enjoy!
 
+php bin/console doctrine:schema:update --dump-sql --force
+
 [1]:  https://symfony.com/doc/3.3/setup.html
 [6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
 [7]:  https://symfony.com/doc/3.3/doctrine.html
