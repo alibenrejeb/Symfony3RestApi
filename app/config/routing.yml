@@ -39,3 +39,7 @@ teams:
 tables:
     type: rest
     resource: Api\LigueBundle\Controller\TableController
+
+matches:
+    type: rest
+    resource: Api\LigueBundle\Controller\MatchController

@@ -54,10 +54,159 @@ class Match
     protected $report;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Saison", inversedBy="matches")
+     * @ORM\Column(name="round", type="integer", options={"default":0})
+     */
+    protected $round;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Saison")
      * @ORM\JoinColumn(name="saison_id", referencedColumnName="annee")
      * @var Saison
      */
     protected $saison;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return Team
+     */
+    public function getTeamHome()
+    {
+        return $this->teamHome;
+    }
+
+    /**
+     * @param Team $teamHome
+     */
+    public function setTeamHome($teamHome)
+    {
+        $this->teamHome = $teamHome;
+    }
+
+    /**
+     * @return Team
+     */
+    public function getTeamAway()
+    {
+        return $this->teamAway;
+    }
+
+    /**
+     * @param Team $teamAway
+     */
+    public function setTeamAway($teamAway)
+    {
+        $this->teamAway = $teamAway;
+    }
+
+    /**
+     * @return int
+     */
+    public function getScoreHome()
+    {
+        return $this->scoreHome;
+    }
+
+    /**
+     * @param int $scoreHome
+     */
+    public function setScoreHome($scoreHome)
+    {
+        $this->scoreHome = $scoreHome;
+    }
+
+    /**
+     * @return int
+     */
+    public function getScoreAway()
+    {
+        return $this->scoreAway;
+    }
+
+    /**
+     * @param int $scoreAway
+     */
+    public function setScoreAway($scoreAway)
+    {
+        $this->scoreAway = $scoreAway;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReport()
+    {
+        return $this->report;
+    }
+
+    /**
+     * @param mixed $report
+     */
+    public function setReport($report)
+    {
+        $this->report = $report;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRound()
+    {
+        return $this->round;
+    }
+
+    /**
+     * @param mixed $round
+     */
+    public function setRound($round)
+    {
+        $this->round = $round;
+    }
+
+    /**
+     * @return Saison
+     */
+    public function getSaison()
+    {
+        return $this->saison;
+    }
+
+    /**
+     * @param Saison $saison
+     */
+    public function setSaison($saison)
+    {
+        $this->saison = $saison;
+    }
 
 }

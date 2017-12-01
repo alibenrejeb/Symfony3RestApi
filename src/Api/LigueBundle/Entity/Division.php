@@ -23,17 +23,6 @@ class Division
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Team", mappedBy="division")
-     * @var Team[]
-     */
-    protected $teams;
-
-    public function __construct()
-    {
-        $this->teams = new ArrayCollection();
-    }
-
-    /**
      * @return mixed
      */
     public function getId()
@@ -63,22 +52,6 @@ class Division
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return TEAM[]
-     */
-    public function getTeams()
-    {
-        return $this->teams;
-    }
-
-    /**
-     * @param TEAM[] $teams
-     */
-    public function setTeams($teams)
-    {
-        $this->teams = $teams;
     }
 
 }

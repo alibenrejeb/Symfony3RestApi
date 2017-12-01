@@ -63,33 +63,16 @@ class Team
     protected $colorAway;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Division", inversedBy="teams")
-     * @var Division
-     */
-    protected $division;
-
-    /**
      * @ORM\Column(type="string", nullable=true)
      */
     protected $logo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="team")
-     * @var Player[]
+     * @ORM\ManyToOne(targetEntity="Division")
+     * @ORM\JoinColumn(name="division_id", referencedColumnName="id")
+     * @var $division Division
      */
-    protected $players;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Table", mappedBy="team")
-     * @var Table[]
-     */
-    protected $tables;
-
-    public function __construct()
-    {
-        $this->players = new ArrayCollection();
-        $this->tables = new ArrayCollection();
-    }
+    protected $division;
 
     /**
      * @return mixed
@@ -268,7 +251,7 @@ class Team
     }
 
     /**
-     * @return Division
+     * @return mixed
      */
     public function getDivision()
     {
@@ -276,43 +259,11 @@ class Team
     }
 
     /**
-     * @param Division $division
+     * @param mixed $division
      */
     public function setDivision($division)
     {
         $this->division = $division;
-    }
-
-    /**
-     * @return Player[]
-     */
-    public function getPlayers()
-    {
-        return $this->players;
-    }
-
-    /**
-     * @param Player[] $players
-     */
-    public function setPlayers($players)
-    {
-        $this->players = $players;
-    }
-
-    /**
-     * @return Table[]
-     */
-    public function getTables()
-    {
-        return $this->tables;
-    }
-
-    /**
-     * @param Table[] $tables
-     */
-    public function setTables($tables)
-    {
-        $this->tables = $tables;
     }
 
 }

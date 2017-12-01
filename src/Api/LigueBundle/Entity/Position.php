@@ -23,17 +23,6 @@ class Position
     protected $libelle;
 
     /**
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="position")
-     * @var Player[]
-     */
-    protected $players;
-
-    public function __construct()
-    {
-        $this->players = new ArrayCollection();
-    }
-
-    /**
      * @return mixed
      */
     public function getId()
@@ -63,22 +52,6 @@ class Position
     public function setLibelle($libelle)
     {
         $this->libelle = $libelle;
-    }
-
-    /**
-     * @return Player[]
-     */
-    public function getPlayers()
-    {
-        return $this->players;
-    }
-
-    /**
-     * @param Player[] $players
-     */
-    public function setPlayers($players)
-    {
-        $this->players = $players;
     }
 
 }

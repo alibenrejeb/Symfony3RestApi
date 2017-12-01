@@ -53,14 +53,14 @@ class Table
     protected $goalsConceded;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Saison", inversedBy="tables")
+     * @ORM\ManyToOne(targetEntity="Saison")
      * @ORM\JoinColumn(name="saison_id", referencedColumnName="annee")
      * @var Saison
      */
     protected $saison;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team", inversedBy="tables")
+     * @ORM\ManyToOne(targetEntity="Team")
      * @var Team
      */
     protected $team;

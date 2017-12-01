@@ -19,14 +19,13 @@ class TeamType extends AbstractType
         $builder->add('colorHome');
         $builder->add('colorAway');
         $builder->add('colorAway');
-        $builder->add('division');
         $builder->add('logo');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Team',
+            'data_class' => 'Api\LigueBundle\Entity\Team',
             'csrf_protection' => false
         ]);
     }

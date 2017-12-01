@@ -62,13 +62,13 @@ class Player
     protected $comment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Position", inversedBy="players")
+     * @ORM\ManyToOne(targetEntity="Position")
      * @var Position
      */
     protected $position;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team", inversedBy="players")
+     * @ORM\ManyToOne(targetEntity="Team")
      * @var Team
      */
     protected $team;

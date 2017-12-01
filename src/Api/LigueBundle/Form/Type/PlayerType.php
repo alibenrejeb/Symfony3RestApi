@@ -26,7 +26,7 @@ class PlayerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Player',
+            'data_class' => 'Api\LigueBundle\Entity\Player',
             'csrf_protection' => false
         ]);
     }

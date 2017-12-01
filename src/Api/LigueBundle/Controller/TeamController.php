@@ -17,7 +17,7 @@ class TeamController extends Controller
 
     /**
      * @Rest\View()
-     * @Rest\Get("/all/teams", name="teams_list")
+     * @Rest\Get("/api/teams", name="teams_list")
      */
     public function getTeamsAction(Request $request)
     {
@@ -52,15 +52,6 @@ class TeamController extends Controller
 
             return new JsonResponse($response, Response::HTTP_NOT_FOUND);
         }
-
-       /* $response = [
-            "id" => $team->getId(),
-            "name" => $team->getId(),
-            "code" => $team->getCode(),
-            "short_name" => $team->getShortName(),
-            "color_home" => $team->getColorHome(),
-            "color_away" => $team->getColorAway()
-        ];*/
 
         return $team;
     }
