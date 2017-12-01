@@ -3,6 +3,7 @@ namespace Api\LigueBundle\Controller;
 
 use Api\LigueBundle\Entity\Team;
 use Api\LigueBundle\Form\Type\TeamType;
+use Api\LigueBundle\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,7 @@ class TeamController extends Controller
 
     /**
      * @Rest\View()
-     * @Rest\Get("/api/teams", name="teams_list")
+     * @Rest\Get("/all/teams", name="teams_list")
      */
     public function getTeamsAction(Request $request)
     {
@@ -34,9 +35,11 @@ class TeamController extends Controller
      */
     public function getTeamAction(Request $request)
     {
-        $team = $this->get('doctrine.orm.entity_manager')
-            ->getRepository('LigueBundle:Team')
-            ->find($request->get('team_id'));
+        /** @var $teamRepository TeamRepository */
+        $teamRepository = $this->getDoctrine()->getRepository(Team::class);
+
+        $team = $teamRepository->findOne($request->get('team_id'));
+
         /* @var $team Team */
 
         if (empty($team)) {
@@ -49,6 +52,15 @@ class TeamController extends Controller
 
             return new JsonResponse($response, Response::HTTP_NOT_FOUND);
         }
+
+       /* $response = [
+            "id" => $team->getId(),
+            "name" => $team->getId(),
+            "code" => $team->getCode(),
+            "short_name" => $team->getShortName(),
+            "color_home" => $team->getColorHome(),
+            "color_away" => $team->getColorAway()
+        ];*/
 
         return $team;
     }

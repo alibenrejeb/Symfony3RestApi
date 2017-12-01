@@ -5,7 +5,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Api\LigueBundle\Repository\TeamRepository")
  * @ORM\Table(name="teams")
  */
 class Team
@@ -88,6 +88,7 @@ class Team
     public function __construct()
     {
         $this->players = new ArrayCollection();
+        $this->tables = new ArrayCollection();
     }
 
     /**
@@ -296,6 +297,22 @@ class Team
     public function setPlayers($players)
     {
         $this->players = $players;
+    }
+
+    /**
+     * @return Table[]
+     */
+    public function getTables()
+    {
+        return $this->tables;
+    }
+
+    /**
+     * @param Table[] $tables
+     */
+    public function setTables($tables)
+    {
+        $this->tables = $tables;
     }
 
 }
