@@ -1,0 +1,3 @@
+ligue_homepage:
+    path:     /
+    defaults: { _controller: LigueBundle:Default:index }
