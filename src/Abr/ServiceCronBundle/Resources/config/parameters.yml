@@ -1,0 +1,12 @@
+parameters:
+    date.timezone: 'UTC'
+    date.defaultTimeZoneUser: 'Europe/Paris'
+
+    ServiceCron:
+        name : 'Abr Cron'
+        version: '1.0.0'
+        purge:
+            log: 30
+            execute: 90
+        services:
+            ServiceCron: ['purgeLog', 'purgeExecute']
