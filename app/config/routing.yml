@@ -1,3 +1,8 @@
+abr_service_cron:
+    resource: "@AbrServiceCronBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 ligue:
     resource: "@LigueBundle/Resources/config/routing.yml"
     prefix:   /

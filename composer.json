@@ -6,7 +6,8 @@
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle",
-            "Api\\LigueBundle\\": "src/Api/LigueBundle"
+            "Api\\LigueBundle\\": "src/Api/LigueBundle",
+            "Abr\\ServiceCronBundle\\": "src/Abr/ServiceCronBundle"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },

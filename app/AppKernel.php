@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new AppBundle\AppBundle(),
             new Api\LigueBundle\LigueBundle(),
+            new Abr\ServiceCronBundle\AbrServiceCronBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
